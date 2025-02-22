@@ -1,11 +1,17 @@
-export default function ProductsPage() {
-  return (
-    <div>
-      <h1>Products</h1>
-      <p>商品1</p>
-      <p>商品2</p>
-      <p>商品3</p>
-      <p>商品4</p>
-    </div>
-  );
+import { Addresses } from "@/components/page/Addresses";
+
+export default async function ProductsPage() {
+  const zip = await fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060");
+  const posts = await zip.json();
+
+  const zip2 = fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060");
+
+  const data2 = await Promise.all([zip2, zip2, zip2]);
+
+  console.log("data2:", data2);
+
+  const props = {
+    data: posts.results,
+  };
+  return <Addresses {...props} />;
 }
