@@ -1,1 +1,1 @@
-export type { Address } from "./address";
+export type { Address } from "./Address";
