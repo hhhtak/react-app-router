@@ -1,4 +1,4 @@
-import { Addresses } from "@/components/page/Addresses";
+import { Addresses } from "@/components/pages/Addresses";
 
 export default async function ProductsPage() {
   const zip = await fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060");
