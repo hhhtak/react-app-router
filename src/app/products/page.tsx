@@ -1,5 +1,5 @@
 import { Addresses } from "@/components/pages/Addresses";
-import type { Address } from "@/type";
+import type { Address } from "@/types";
 
 export default async function ProductsPage() {
   // todo:開発したAPIなら型を縛ったほうがよさそう

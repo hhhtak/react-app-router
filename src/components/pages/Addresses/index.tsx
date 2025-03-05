@@ -1,5 +1,5 @@
 "use client";
-import type { Address } from "@/type";
+import type { Address } from "@/types";
 import { FC } from "react";
 
 type Props = {
