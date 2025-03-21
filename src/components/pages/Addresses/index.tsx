@@ -17,16 +17,16 @@ export const Addresses: FC<Props> = (props) => {
 
   return (
     <>
-      <ul>
+      <div>
         {data.map((post) => (
-          <>
-            <li key={post.zipcode}>{post.zipcode}</li>
-            <li key={post.address1}>{post.address1}</li>
-            <li key={post.address2}>{post.address2}</li>
-            <li key={post.address3}>{post.address3}</li>
-          </>
+          <div key={post.zipcode}>
+            <p>{post.zipcode}</p>
+            <p>{post.address1}</p>
+            <p>{post.address2}</p>
+            <p>{post.address3}</p>
+          </div>
         ))}
-      </ul>
+      </div>
       <button onClick={handleClick}>ボタン</button>
     </>
   );

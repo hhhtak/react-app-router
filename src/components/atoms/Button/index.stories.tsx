@@ -23,3 +23,11 @@ export const Small: Story = {
     size: "small",
   },
 };
+
+export const Disabled: Story = {
+  render: (args) => <Button {...args} />,
+  args: {
+    children: "hogehoge",
+    disabled: true,
+  },
+};
