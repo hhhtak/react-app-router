@@ -3,18 +3,25 @@
 import { Button } from "@/components/atoms/Button";
 import { redirect } from "next/navigation";
 import { useActionState } from "react";
+import { updateNameFormAction } from "./updateNameForm-actions";
 
 const UpdateNameForm = () => {
-  const [error, submitAction, isPending] = useActionState(
-    async (previousState: any, formData: any) => {
-      console.log("previousState:", previousState);
-      console.log("formData:", formData.get("name"));
+  const { registerName } = updateNameFormAction();
+
+  const [state, submitAction, isPending] = useActionState(
+    async (previousState: string, formData: FormData): Promise<any> => {
+      const register = await registerName(formData);
+
+      if (register.message) {
+        return { errorMessage: register.message };
+      }
+
       const zip = await fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060");
 
       const posts = await zip.json();
 
       if (posts.results === null) {
-        return posts.message;
+        return { errorMessage: posts.message };
       }
       redirect("/products");
     },
@@ -30,7 +37,7 @@ const UpdateNameForm = () => {
       <Button type="submit" disabled={isPending}>
         Update
       </Button>
-      {error && <p>{error}</p>}
+      {state?.errorMessage && <p>{state?.errorMessage}</p>}
     </form>
   );
 };

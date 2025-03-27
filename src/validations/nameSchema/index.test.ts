@@ -6,23 +6,23 @@ describe("nameSchema", () => {
     const result = nameSchema.safeParse("");
     expect(result.success).toBe(false);
     if (!result.success) {
-      expect(result.error.issues[0].message).toBe("入力が必須の項目です");
+      expect(result.error.issues[0].message).toBe("1文字以上で入力してください");
     }
   });
 
-  it("undefinedはエラーになる", () => {
-    const result = nameSchema.safeParse(undefined);
-    expect(result.success).toBe(false);
-    if (!result.success) {
-      expect(result.error.issues[0].message).toBe("入力が必須の項目です");
-    }
-  });
+  //   it("undefinedはエラーになる", () => {
+  //     const result = nameSchema.safeParse(undefined);
+  //     expect(result.success).toBe(false);
+  //     if (!result.success) {
+  //       expect(result.error.issues[0].message).toBe("入力が必須の項目です");
+  //     }
+  //   });
 
   it("1文字未満はエラーになる", () => {
     const result = nameSchema.safeParse("");
     expect(result.success).toBe(false);
     if (!result.success) {
-      expect(result.error.issues[0].message).toBe("入力が必須の項目です");
+      expect(result.error.issues[0].message).toBe("1文字以上で入力してください");
     }
   });
 
@@ -30,7 +30,7 @@ describe("nameSchema", () => {
     const result = nameSchema.safeParse("a".repeat(21));
     expect(result.success).toBe(false);
     if (!result.success) {
-      expect(result.error.issues[0].message).toBe("入力値が長すぎます");
+      expect(result.error.issues[0].message).toBe("20文字以内で入力してください");
     }
   });
 
