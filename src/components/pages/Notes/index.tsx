@@ -8,7 +8,17 @@ type Props = {
 
 export const Notes: FC<Props> = (props) => {
   const { notes } = props;
-  console.log("data1111111:", notes);
 
-  return <div>hogehogehoge</div>;
+  return (
+    <>
+      {notes.map((post) => (
+        <div key={post.id}>
+          <p>id:{post.id}</p>
+          <p>content:{post.content}</p>
+          <p>updated:{post.updated}</p>
+          <p>created:{post.created}</p>
+        </div>
+      ))}
+    </>
+  );
 };
