@@ -10,6 +10,7 @@
     "test": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "prisma:studio": "npx prisma studio",
     "prisma:migrate": "npx prisma migrate dev"
   },
   "dependencies": {
