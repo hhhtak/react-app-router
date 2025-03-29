@@ -12,7 +12,7 @@ export const notesAction = () => {
   };
 
   const handleSaveClick = async () => {
-    const response = await fetch("/api/notes", {
+    const response = await fetch(`${process.env.BASE_URL}/api/notes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export const notesAction = () => {
   };
 
   const handleDeleteClick = async (id: number) => {
-    const response = await fetch(`/api/notes/${id}`, {
+    const response = await fetch(`${process.env.BASE_URL}/api/notes/${id}`, {
       method: "DELETE",
     });
 
