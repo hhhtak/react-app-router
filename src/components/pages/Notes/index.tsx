@@ -10,7 +10,7 @@ type Props = {
 
 export const Notes: FC<Props> = (props) => {
   const { notes: notesData } = props;
-  const { handleSaveClick, setNotes, notes } = notesAction();
+  const { handleDeleteClick, handleSaveClick, setNotes, notes } = notesAction();
 
   // 画面起動時にAPIから取得した値を設定する
   // そのあとはAPI実行時に値を設定するので動かさない
@@ -40,7 +40,14 @@ export const Notes: FC<Props> = (props) => {
               <td>{post.content}</td>
               <td>{new Date(post.created).toLocaleDateString("ja")}</td>
               <td>
-                <Button size={"small"}>delete</Button>
+                <Button
+                  size={"small"}
+                  onClick={() => {
+                    handleDeleteClick(post.id);
+                  }}
+                >
+                  delete
+                </Button>
               </td>
             </tr>
           ))}

@@ -25,7 +25,7 @@ export const notesAction = () => {
   };
 
   const handleDeleteClick = async (id: number) => {
-    const response = await fetch(`${process.env.BASE_URL}/api/notes/${id}`, {
+    const response = await fetch(`/api/notes?id=${id}`, {
       method: "DELETE",
     });
 
