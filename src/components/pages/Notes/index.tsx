@@ -12,10 +12,11 @@ export const Notes: FC<Props> = (props) => {
   const { notes: notesData } = props;
   const { handleSaveClick, setNotes, notes } = notesAction();
 
+  // 画面起動時にAPIから取得した値を設定する
+  // そのあとはAPI実行時に値を設定するので動かさない
   useEffect(() => {
-    console.log(notesData);
     setNotes(notesData);
-  }, [notesData]);
+  }, []);
 
   return (
     <>

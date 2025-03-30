@@ -12,8 +12,6 @@ export const notesAction = () => {
 
   const handleSaveClick = async (formData: FormData) => {
     const content = formData.get("notes");
-    console.log("content:", content);
-    console.log("process.env.BASE_URL:", process.env.BASE_URL);
     const response = await fetch(`/api/notes`, {
       method: "POST",
       headers: {
