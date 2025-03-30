@@ -4,15 +4,17 @@ import { Note } from "@/types";
 import { useState } from "react";
 
 export const notesAction = () => {
-  const [content, setContent] = useState("");
-  const [dataSource, setDataSource] = useState<Note[]>([]);
+  const [notes, setNotes] = useState<Note[]>([]);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setContent(event.target.value);
-  };
+  // const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setContent(event.target.value);
+  // };
 
-  const handleSaveClick = async () => {
-    const response = await fetch(`${process.env.BASE_URL}/api/notes`, {
+  const handleSaveClick = async (formData: FormData) => {
+    const content = formData.get("notes");
+    console.log("content:", content);
+    console.log("process.env.BASE_URL:", process.env.BASE_URL);
+    const response = await fetch(`/api/notes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,8 +23,7 @@ export const notesAction = () => {
     });
 
     const notes = await response.json();
-    setDataSource(notes);
-    setContent("");
+    setNotes(notes);
   };
 
   const handleDeleteClick = async (id: number) => {
@@ -31,8 +32,8 @@ export const notesAction = () => {
     });
 
     const notes = await response.json();
-    setDataSource(notes);
+    setNotes(notes);
   };
 
-  return { handleInputChange, handleSaveClick, handleDeleteClick, content, dataSource };
+  return { handleSaveClick, handleDeleteClick, notes, setNotes };
 };
