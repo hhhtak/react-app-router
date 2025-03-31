@@ -9,7 +9,7 @@ const UpdateNameForm = () => {
   const { registerName } = updateNameFormAction();
 
   const [state, submitAction, isPending] = useActionState(
-    async (previousState: string, formData: FormData): Promise<any> => {
+    async (_previousState: string, formData: FormData): Promise<any> => {
       const register = await registerName(formData);
 
       if (register.message) {
