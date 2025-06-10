@@ -1,5 +1,5 @@
 import type { Address } from "@/types";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs";
 import { Addresses } from ".";
 
 const meta: Meta<typeof Addresses> = {
